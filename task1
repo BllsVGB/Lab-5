@@ -1,0 +1,29 @@
+import re
+import csv
+from re import findall
+
+def first_task() -> tuple:
+    data = ''.join(open('task1-ru.txt', encoding='UTF-8').readlines())
+    words = re.findall(r'\b[a-zA-Zа-яА-ЯёЁ]{3,5}\b', data)
+    numbers = re.findall(r'\b\d{3,}\b', data)
+    print("Слова (3-5 букв):", ", ".join(words))
+    print("Числа (3+ знака):", ", ".join(numbers))
+
+
+def second_task() -> list:
+    data = ''.join(open('task2.html', encoding='UTF-8').readlines())
+    tags = set(re.findall(r'<([a-z]+)', data)) # находим открывающие теги
+    print("Открывающие теги:", ", ".join(tags))
+
+
+def output() -> None:
+    print('Вариант 1\n')
+    first_answer = first_task()
+    print(first_answer)
+
+    second_answer = second_task()
+    print(second_answer)
+
+
+if __name__ == '__main__':
+    output()
